@@ -6,7 +6,7 @@
 //
 //MARK: Первейшая регистрация
 import UIKit
-
+import AudioToolbox
 class CreateViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
@@ -17,7 +17,7 @@ class CreateViewController: UIViewController {
         
         super.viewDidLoad()
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
-
+//
 //        self.view.addGestureRecognizer(tapGesture)
     }
     //MARK: Func
@@ -56,8 +56,11 @@ class CreateViewController: UIViewController {
         if firstTextField.text == "" {
             UIView.animate(withDuration: 0.3){
                 self.firstTextField.backgroundColor = .red
+                self.firstTextField.frame.origin.x += 5
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             } completion: { _ in
                 UIView.animate(withDuration: 0.3) {
+                    self.firstTextField.frame.origin.x -= 5
                     self.firstTextField.backgroundColor = .white
                 } completion: { _ in
                     self.showAlert(title:"Error", message: "Empty password", defaultAction: nil)
@@ -71,9 +74,11 @@ class CreateViewController: UIViewController {
         if secondTextField.text == "" {
             UIView.animate(withDuration: 0.3){
                 self.secondTextField.backgroundColor = .red
+                self.secondTextField.frame.origin.x += 5
             } completion: { _ in
                 UIView.animate(withDuration: 0.3) {
                     self.secondTextField.backgroundColor = .white
+                    self.secondTextField.frame.origin.x -= 5
                 } completion: { _ in
                     self.showAlert(title:"Error", message: "Empty password", defaultAction: nil)
         }
@@ -98,3 +103,21 @@ class CreateViewController: UIViewController {
     }
 }
 
+//extension CreateViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//     hidekeyboard()
+//        return true
+//    }
+//
+//    func hidekeyboard() {
+//        self.firstTextField.resignFirstResponder()
+////        self.secondTextField.resignFirstResponder()
+//}
+//
+//}
+extension CreateViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}

@@ -6,7 +6,7 @@
 //
 //MARK: Экран ввода пароля
 import UIKit
-
+import AudioToolbox
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
@@ -56,7 +56,10 @@ class LoginViewController: UIViewController {
             self.navigationController?.pushViewController(controller, animated: true)
     
     } else {
-        
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    
         showAlert(title:"Error!", message: "Wrong password", defaultAction: nil)
     }
     
@@ -82,5 +85,16 @@ private func showCreateNewVc() {
 }
 
 
+
+}
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     hidekeyboard()
+        return true
+    }
+    func hidekeyboard() {
+        self.textField.resignFirstResponder()
+        
+}
 
 }

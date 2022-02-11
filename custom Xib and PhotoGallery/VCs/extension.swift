@@ -18,6 +18,30 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+extension UIViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}
+//extension CreateViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//     hidekeyboard()
+//        return true
+//    }
+//    func hidekeyboard() {
+//        firstTextField.resignFirstResponder()
+//
+//extension LoginViewController: UITextFieldDelegate {
+//    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//     hidekeyboard()
+//        return true
+//    }
+//    func hidekeyboard() {
+//        self.textField.resignFirstResponder()
+//}
+
+//}
 //extension UIViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 //    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
 //    var choosenImage = UIImage()

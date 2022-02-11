@@ -32,3 +32,4 @@ class Photo: Codable {
         try container.encode(self.isLiked, forKey: .isLiked)
     }
 }
+
