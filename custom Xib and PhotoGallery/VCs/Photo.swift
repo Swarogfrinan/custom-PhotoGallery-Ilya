@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//кодировка и раскодировка
+//MARK: Coder / decoder
 class Photo: Codable {
     var name: String
     var message: String

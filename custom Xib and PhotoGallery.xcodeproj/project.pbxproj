@@ -92,8 +92,8 @@
 		4331ADAA27B5C03500D4BC98 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				4331ADA027B5BFAA00D4BC98 /* LoginViewController.swift */,
 				4331ADA227B5BFDD00D4BC98 /* CreateViewController.swift */,
+				4331ADA027B5BFAA00D4BC98 /* LoginViewController.swift */,
 				4331ADA427B5BFFA00D4BC98 /* ManagerViewController.swift */,
 				4331ADA627B5C00D00D4BC98 /* AddViewController.swift */,
 				4331ADA827B5C02500D4BC98 /* StorageViewController.swift */,

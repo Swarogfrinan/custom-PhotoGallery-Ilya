@@ -86,6 +86,9 @@
                                     <imageReference key="image" image="eye.slash" catalog="system" symbolScale="large"/>
                                 </state>
                                 <state key="selected" image="eyes.inverse" catalog="system"/>
+                                <connections>
+                                    <action selector="showPassButtonFirst:" destination="Oqq-YG-ddt" eventType="touchUpInside" id="aZz-GU-SHQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfz-Jz-dqo">
                                 <rect key="frame" x="357" y="481" width="66" height="34"/>
@@ -95,6 +98,9 @@
                                     <imageReference key="image" image="eye.slash" catalog="system" symbolScale="large"/>
                                 </state>
                                 <state key="selected" image="eyes.inverse" catalog="system"/>
+                                <connections>
+                                    <action selector="showPassButtonSecond:" destination="Oqq-YG-ddt" eventType="touchUpInside" id="YVg-d4-Zi0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHO-Qt-pJc">
                                 <rect key="frame" x="129" y="579" width="156" height="34"/>
@@ -143,10 +149,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ul-GT-c2C">
-                                <rect key="frame" x="87" y="142" width="240" height="128"/>
+                                <rect key="frame" x="66" y="142" width="261" height="279"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TUh-sn-HLA">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="261" height="279"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="regular"/>
@@ -196,7 +202,7 @@
                                 <rect key="frame" x="50" y="449" width="317" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EhI-Nb-uTQ"/>
@@ -210,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3J-Af-yyY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="141"/>
+            <point key="canvasLocation" x="1613.0434782608697" y="140.625"/>
         </scene>
         <!--Storage View Controller-->
         <scene sceneID="oFc-64-S3S">
@@ -293,16 +299,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7B-AD-7mx">
-                                <rect key="frame" x="313" y="469" width="98" height="81"/>
+                                <rect key="frame" x="114" y="657" width="127" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="13" height="16"/>
-                                <state key="normal" image="eye" catalog="system"/>
+                                <state key="normal" title="забыл пароль" image="eye" catalog="system"/>
                                 <state key="disabled">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <state key="selected" image="eye.slash" catalog="system"/>
+                                <connections>
+                                    <action selector="password:" destination="izg-hb-okS" eventType="touchUpInside" id="GCG-Ti-kmN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hIn-bT-Bn2"/>

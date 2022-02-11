@@ -4,7 +4,7 @@
 //
 //  Created by Ilya Vasilev on 11.02.2022.
 //
-
+//MARK: Enums
 import Foundation
 enum Keys: String{
     case pass

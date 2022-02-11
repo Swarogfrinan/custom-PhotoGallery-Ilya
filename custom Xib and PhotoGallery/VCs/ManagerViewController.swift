@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//MARK: Переход в хранилище фотографий или же их добавление
 class ManagerViewController: UIViewController {
 
     override func viewDidLoad() {

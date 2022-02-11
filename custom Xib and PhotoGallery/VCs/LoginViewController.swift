@@ -4,7 +4,7 @@
 //
 //  Created by Ilya Vasilev on 11.02.2022.
 //
-
+//MARK: Экран ввода пароля
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var showPassButton: UIButton!
     
-    
+    //MARK: Проверка нового пользователя
     
     var new = false {
         didSet {
@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
             }
         }
       }
-    
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.isSecureTextEntry = true
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
 //        self.view.addGestureRecognizer(tapGesture)
 //        
     }
-    
+    //MARK: Func
     @IBAction func showPassButtonPressed(_ sender: UIButton) {
 //        textField.isSecureTextEntry = !textField.isSecureTextEntry
         sender.isSelected = !sender.isSelected
@@ -46,6 +46,9 @@ class LoginViewController: UIViewController {
         textField.isSecureTextEntry = false
     }
         }
+    @IBAction func password(_ sender: UIButton) {
+        showCreateNewVc()
+    }
     
     @IBAction func loginButtonPressed(_sender: UIButton) {
         if checkPass() {
@@ -58,7 +61,8 @@ class LoginViewController: UIViewController {
     }
     
     }
-
+    
+    //MARK: Check password
  private func checkPass() -> Bool{
     if let pass = UserDefaults.standard.value(forKey: Keys.pass.rawValue) as? String{
         print(pass)
@@ -70,7 +74,7 @@ class LoginViewController: UIViewController {
     }
     return false
 }
-
+    //MARK: Create New User
 private func showCreateNewVc() {
     guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "CreateViewController") as? CreateViewController else { return }
     present(controller, animated: true, completion: nil)

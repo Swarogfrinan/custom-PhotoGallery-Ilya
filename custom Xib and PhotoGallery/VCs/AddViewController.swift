@@ -8,16 +8,19 @@
 import UIKit
 
 class AddViewController: UIViewController {
+    //MARK: IBOutlet
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var textField: UITextField!
     
+    //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
 //        self.view.addGestureRecognizer(tapGesture)
     }
+    //MARK: Func
     @IBAction func addButtonPressed(_ sender: UIButton){
         ShowAlertActionSheet()
     }
@@ -50,7 +53,7 @@ class AddViewController: UIViewController {
 //        }
         
 //    }
-    
+    //MARK: Alert выбора
     private func ShowAlertActionSheet() {
         let alert = UIAlertController(title: "add photo", message: "Choose source", preferredStyle: .actionSheet)
         let camera = UIAlertAction(title: "Camera", style: .default) { _ in
@@ -63,7 +66,7 @@ class AddViewController: UIViewController {
         alert.addAction(library)
         present(alert, animated: true,completion: nil)
     }
-    
+    //MARK: ShowPicker
     private func showPicker(source: UIImagePickerController.SourceType){
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -71,7 +74,7 @@ class AddViewController: UIViewController {
         picker.sourceType = source
         present(picker, animated: true,completion: nil)
     }
-    
+    //MARK: SaveImage
     private func saveImage(image: UIImage) -> String? {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil } //путь к папке приложения на телефоне
 
@@ -89,7 +92,7 @@ class AddViewController: UIViewController {
                 print("couldn't remove file at path", error)
             }
     }
-     
+        //MARK: Save Error
         do {
             try data.write(to: fileURL)
             return fileName

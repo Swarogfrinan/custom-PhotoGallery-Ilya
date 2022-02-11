@@ -4,7 +4,7 @@
 //
 //  Created by Ilya Vasilev on 11.02.2022.
 //
-
+//MARK: Extension Alert standart
 import Foundation
 import UIKit
 extension UIViewController {
@@ -28,6 +28,7 @@ extension UIViewController {
 //        }
 //}
 //}
+//MARK: AddView delegate
 extension AddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
                                info: [UIImagePickerController.InfoKey : Any]) {
