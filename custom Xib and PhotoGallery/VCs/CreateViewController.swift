@@ -16,9 +16,13 @@ class CreateViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
-//
-//        self.view.addGestureRecognizer(tapGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc private func hideKeyboard(){
+        view.endEditing(true)
     }
     //MARK: Func
     @IBAction func continueButtonPressed(_ sender: UIButton) {
@@ -56,11 +60,13 @@ class CreateViewController: UIViewController {
         if firstTextField.text == "" {
             UIView.animate(withDuration: 0.3){
                 self.firstTextField.backgroundColor = .red
-                self.firstTextField.frame.origin.x += 5
+                self.firstTextField.frame.origin.x += 3
+                self.firstTextField.frame.origin.y -= 3
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             } completion: { _ in
                 UIView.animate(withDuration: 0.3) {
-                    self.firstTextField.frame.origin.x -= 5
+                    self.firstTextField.frame.origin.y += 3
+                    self.firstTextField.frame.origin.x -= 3
                     self.firstTextField.backgroundColor = .white
                 } completion: { _ in
                     self.showAlert(title:"Error", message: "Empty password", defaultAction: nil)
@@ -70,15 +76,36 @@ class CreateViewController: UIViewController {
             error = true
             
             }
+        if error == true {
+                UIView.animate(withDuration: 0.3){
+                    self.secondTextField.backgroundColor = .red
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    self.secondTextField.frame.origin.x += 3
+                    self.secondTextField.frame.origin.y -= 3
+                    
+                } completion: { _ in
+                    UIView.animate(withDuration: 0.3) {
+                        self.secondTextField.frame.origin.x -= 3
+                        self.secondTextField.frame.origin.y += 3
+                        self.secondTextField.backgroundColor = .white
+        }
+                }
+        }
+        
         //MARK: Проверка secondTextField
         if secondTextField.text == "" {
             UIView.animate(withDuration: 0.3){
                 self.secondTextField.backgroundColor = .red
-                self.secondTextField.frame.origin.x += 5
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                self.secondTextField.frame.origin.x += 3
+                self.secondTextField.frame.origin.y -= 3
+                
             } completion: { _ in
                 UIView.animate(withDuration: 0.3) {
+                    self.secondTextField.frame.origin.x -= 3
+                    self.secondTextField.frame.origin.y += 3
                     self.secondTextField.backgroundColor = .white
-                    self.secondTextField.frame.origin.x -= 5
+                    
                 } completion: { _ in
                     self.showAlert(title:"Error", message: "Empty password", defaultAction: nil)
         }
@@ -87,10 +114,12 @@ class CreateViewController: UIViewController {
         }
             if error {return false}
             if firstTextField.text != secondTextField.text, firstTextField.text != ""{
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self.showAlert(title:"Error!", message: "password dosnt match", defaultAction: nil)
                 error = true
             }
         if let count = firstTextField.text?.count, count <= 3{
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             showAlert(title: "Eror!", message: "Your password need 4 symbols and more", defaultAction: nil)
             error = true
         }
@@ -115,9 +144,4 @@ class CreateViewController: UIViewController {
 //}
 //
 //}
-extension CreateViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return true
-    }
-}
+

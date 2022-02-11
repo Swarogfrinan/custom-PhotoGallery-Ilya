@@ -30,11 +30,19 @@ class LoginViewController: UIViewController {
         if UserDefaults.standard.value(forKey: Keys.pass.rawValue) == nil{
             new = true
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
 //        
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
 //        self.view.addGestureRecognizer(tapGesture)
 //        
     }
+    
+    @objc private func hideKeyboard(){
+        view.endEditing(true)
+    }
+    
     //MARK: Func
     @IBAction func showPassButtonPressed(_ sender: UIButton) {
 //        textField.isSecureTextEntry = !textField.isSecureTextEntry
@@ -87,14 +95,14 @@ private func showCreateNewVc() {
 
 
 }
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-     hidekeyboard()
-        return true
-    }
-    func hidekeyboard() {
-        self.textField.resignFirstResponder()
-        
-}
-
-}
+//extension LoginViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//     hidekeyboard()
+//        return true
+//    }
+//    func hidekeyboard() {
+//        self.textField.resignFirstResponder()
+//
+//}
+//
+//}
