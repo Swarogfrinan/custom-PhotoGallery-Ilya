@@ -16,12 +16,13 @@ class CreateViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+            //MARK: Скрытие клавиатуры
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
     @objc private func hideKeyboard(){
+        firstTextField.resignFirstResponder()
         view.endEditing(true)
     }
     //MARK: Func
@@ -31,30 +32,32 @@ class CreateViewController: UIViewController {
     }
     }
     
-    
+    //скрыть пароль
     @IBAction func showPassButtonFirst(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if !sender.isSelected == true {
         firstTextField.isSecureTextEntry = true
+            secondTextField.isSecureTextEntry = true
     }
      else {
         firstTextField.isSecureTextEntry = false
+         secondTextField.isSecureTextEntry = false
     }
         }
     
-    @IBAction func showPassButtonSecond(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if !sender.isSelected == true {
-        secondTextField.isSecureTextEntry = true
-    }
-     else {
-        secondTextField.isSecureTextEntry = false
-    }
-        }
+//    @IBAction func showPassButtonSecond(_ sender: UIButton) {
+//        sender.isSelected = !sender.isSelected
+//        if !sender.isSelected == true {
+//        secondTextField.isSecureTextEntry = true
+//    }
+//     else {
+//        secondTextField.isSecureTextEntry = false
+//    }
+//        }
     
     
     
-    //MARK: Func что-то здесь сломано
+    //MARK: Func что-то здесь сломано // уже не сломано
     private func rulesToDo() -> Bool{
         var error = false
         if firstTextField.text == "" {

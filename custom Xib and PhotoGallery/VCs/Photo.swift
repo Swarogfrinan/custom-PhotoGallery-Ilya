@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 //MARK: Coder / decoder
 class Photo: Codable {
     var name: String

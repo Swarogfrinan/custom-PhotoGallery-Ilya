@@ -27,32 +27,31 @@ class AddViewController: UIViewController {
     @IBAction func cancelButtonPressed(_ sender: UIButton){
         dismiss(animated: true, completion: nil)
     }
-//    @IBAction func saveButtonPressed (_ sender: UIButton){
-//        guard let image = imageView.image else {
-//            showAlert(title:"Error", message: "Empty image", defaultAction: nil)
-//            return
-//        }
-//        guard let text = textField.text else { return }
-//        guard let imageName = saveImage(image: image) else { return }
-//        let photo = Photo(name: imageName, message: text)
-//
-//        if let array = UserDefaults.standard.value([Photo].self, forKey: Keys.photos.rawValue) {
-//
-//            var tempArray = array
-//            tempArray.append(photo)
-//            UserDefaults.standard.set(tempArray, forKey: Keys.photos.rawValue)
-//
-//        } else {
-//            let array: [Photo] = [photo]
-//            UserDefaults.standard.set(array, forKey: Keys.photos.rawValue)
-//        }
-//
-//        showAlert(title: "Succes!", message: "Photo saved!") {
-//            self.imageView.image = nil
-//            self.textField.text = ""
-//        }
+    @IBAction func saveButtonPressed (_ sender: UIButton){
+        guard let image = imageView.image else {
+            showAlert(title:"Error", message: "Empty image", defaultAction: nil)
+            return
+        }
+        guard let text = textField.text else { return }
+        guard let imageName = saveImage(image: image) else { return }
+        let photo = Photo(name: imageName, message: text)
+
+        if let array = UserDefaults.standard.value([Photo].self, forKey: Keys.photos.rawValue) {
+    var tempArray = array
+    tempArray.append(photo)
+    UserDefaults.standard.set(encodable: tempArray, forKey: Keys.photos.rawValue)
+
+        } else {
+            let array: [Photo] = [photo]
+            UserDefaults.standard.set(encodable: array, forKey: Keys.photos.rawValue)
+        }
+
+        showAlert(title: "Succes!", message: "Photo saved!") {
+            self.imageView.image = nil
+            self.textField.text = ""
+        }
         
-//    }
+    }
     //MARK: Alert выбора
     private func ShowAlertActionSheet() {
         let alert = UIAlertController(title: "add photo", message: "Choose source", preferredStyle: .actionSheet)
