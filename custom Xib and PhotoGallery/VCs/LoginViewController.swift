@@ -7,6 +7,7 @@
 //MARK: Экран ввода пароля
 import UIKit
 import AudioToolbox
+import WebKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController {
         if UserDefaults.standard.value(forKey: Keys.pass.rawValue) == nil{
             new = true
         }
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -38,6 +40,20 @@ class LoginViewController: UIViewController {
 //        self.view.addGestureRecognizer(tapGesture)
 //        
     }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        let webView = WKWebView.init(frame: view.frame)
+        view.addSubview(webView)
+        
+        let adress = "https://www.vk.com"
+        guard let url = URL(string: adress) else { return }
+        let request = URLRequest(url: url)
+        
+        webView.load(request)
+    }
+    
     
     @objc private func hideKeyboard(){
         view.endEditing(true)
@@ -95,14 +111,4 @@ private func showCreateNewVc() {
 
 
 }
-//extension LoginViewController: UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//     hidekeyboard()
-//        return true
-//    }
-//    func hidekeyboard() {
-//        self.textField.resignFirstResponder()
-//
-//}
-//
-//}
+
