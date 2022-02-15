@@ -40,13 +40,11 @@ class LoginViewController: UIViewController {
 //        self.view.addGestureRecognizer(tapGesture)
 //        
     }
+    //MARK: Проба браузера
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
-        
         let webView = WKWebView.init(frame: view.frame)
         view.addSubview(webView)
-        
         let adress = "https://www.vk.com"
         guard let url = URL(string: adress) else { return }
         let request = URLRequest(url: url)
@@ -54,7 +52,7 @@ class LoginViewController: UIViewController {
         webView.load(request)
     }
     
-    
+    //MARK: Прячем клавиатуру
     @objc private func hideKeyboard(){
         view.endEditing(true)
     }
