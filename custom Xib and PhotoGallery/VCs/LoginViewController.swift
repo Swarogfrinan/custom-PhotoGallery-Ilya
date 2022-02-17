@@ -9,11 +9,12 @@ import UIKit
 import AudioToolbox
 import WebKit
 class LoginViewController: UIViewController {
-    
+    //MARK: IBOutlet
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var showPassButton: UIButton!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     //MARK: Проверка нового пользователя
     
@@ -41,16 +42,16 @@ class LoginViewController: UIViewController {
 //        
     }
     //MARK: Проба браузера
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let webView = WKWebView.init(frame: view.frame)
-        view.addSubview(webView)
-        let adress = "https://www.vk.com"
-        guard let url = URL(string: adress) else { return }
-        let request = URLRequest(url: url)
-        
-        webView.load(request)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        let webView = WKWebView.init(frame: view.frame)
+//        view.addSubview(webView)
+//        let adress = "https://www.vk.com"
+//        guard let url = URL(string: adress) else { return }
+//        let request = URLRequest(url: url)
+//
+//        webView.load(request)
+//    }
     
     //MARK: Прячем клавиатуру
     @objc private func hideKeyboard(){
@@ -58,6 +59,7 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: Func
+    //show passwrod button
     @IBAction func showPassButtonPressed(_ sender: UIButton) {
 //        textField.isSecureTextEntry = !textField.isSecureTextEntry
         sender.isSelected = !sender.isSelected
@@ -68,10 +70,11 @@ class LoginViewController: UIViewController {
         textField.isSecureTextEntry = false
     }
         }
+        //forgot password
     @IBAction func password(_ sender: UIButton) {
         showCreateNewVc()
     }
-    
+    //Продолжить вход
     @IBAction func loginButtonPressed(_sender: UIButton) {
         if checkPass() {
             guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "ManagerViewController") as? ManagerViewController else {return}
@@ -84,7 +87,27 @@ class LoginViewController: UIViewController {
     
         showAlert(title:"Error!", message: "Wrong password", defaultAction: nil)
     }
+    }
+    private func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc private func keyboardWillShow(_ notification: NSNotification) {
     
+guard let userInfo = notification.userInfo,
+    let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+                
+                if notification.name == UIResponder.keyboardWillHideNotification {
+                    bottomConstraint.constant = 0
+                } else {
+                    bottomConstraint.constant = keyboardScreenEndFrame.height + 10
+                }
+                
+                view.needsUpdateConstraints()
+                UIView.animate(withDuration: animationDuration) {
+                    self.view.layoutIfNeeded()
+                }
     }
     
     //MARK: Check password

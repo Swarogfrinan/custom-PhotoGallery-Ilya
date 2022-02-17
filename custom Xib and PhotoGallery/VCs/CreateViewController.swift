@@ -19,6 +19,7 @@ class CreateViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var ShowPasswordButton: UIButton!
     
     
     
@@ -28,7 +29,7 @@ class CreateViewController: UIViewController {
         let date = Date()
         print(date.timeIntervalSince1970)
         datePicker.maximumDate = date
-        UIDatePickerStyle.wheels
+        
         //
 //        labelGender.text = arrayGender.first
         registerForKeyboardNotifications()
@@ -147,10 +148,11 @@ class CreateViewController: UIViewController {
     }
     }
     
-    //скрыть пароль
+    //MARK: Скрыть пароль
     @IBAction func showPassButtonFirst(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+      sender.isSelected = !sender.isSelected
         if !sender.isSelected == true {
+            ShowPasswordButton.backgroundColor = .white
         firstTextField.isSecureTextEntry = true
             secondTextField.isSecureTextEntry = true
     }

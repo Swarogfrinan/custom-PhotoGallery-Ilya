@@ -23,6 +23,8 @@
 		435805CB27B68E83007E6FE6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435805CA27B68E83007E6FE6 /* Photo.swift */; };
 		435805CD27B690E8007E6FE6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435805CC27B690E8007E6FE6 /* Enums.swift */; };
 		435805CF27B691EE007E6FE6 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435805CE27B691EE007E6FE6 /* extension.swift */; };
+		4384A02F27BE6367005E1822 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4384A02E27BE6366005E1822 /* gif.gif */; };
+		4384A03627BE70B4005E1822 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4384A03527BE70B3005E1822 /* gif.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		435805CA27B68E83007E6FE6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		435805CC27B690E8007E6FE6 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		435805CE27B691EE007E6FE6 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		4384A02E27BE6366005E1822 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
+		4384A03527BE70B3005E1822 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				4331AD8C27B5762500D4BC98 /* ViewController.swift */,
 				4331AD8E27B5762500D4BC98 /* Main.storyboard */,
 				4331AD9127B5762700D4BC98 /* Assets.xcassets */,
+				4384A02E27BE6366005E1822 /* gif.gif */,
+				4384A03527BE70B3005E1822 /* gif.gif */,
 				4331AD9327B5762700D4BC98 /* LaunchScreen.storyboard */,
 				4331AD9627B5762700D4BC98 /* Info.plist */,
 			);
@@ -129,6 +135,8 @@
 			dependencies = (
 			);
 			name = "custom Xib and PhotoGallery";
+			packageProductDependencies = (
+			);
 			productName = "custom Xib and PhotoGallery";
 			productReference = 4331AD8527B5762500D4BC98 /* custom Xib and PhotoGallery.app */;
 			productType = "com.apple.product-type.application";
@@ -157,6 +165,8 @@
 				Base,
 			);
 			mainGroup = 4331AD7C27B5762500D4BC98;
+			packageReferences = (
+			);
 			productRefGroup = 4331AD8627B5762500D4BC98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,7 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4331AD9527B5762700D4BC98 /* LaunchScreen.storyboard in Resources */,
+				4384A02F27BE6367005E1822 /* gif.gif in Resources */,
 				4331AD9227B5762700D4BC98 /* Assets.xcassets in Resources */,
+				4384A03627BE70B4005E1822 /* gif.gif in Resources */,
 				4331AD9D27B5774100D4BC98 /* CustomView.xib in Resources */,
 				4331AD9027B5762500D4BC98 /* Main.storyboard in Resources */,
 			);
