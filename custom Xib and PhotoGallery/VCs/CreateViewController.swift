@@ -26,6 +26,7 @@ class CreateViewController: UIViewController {
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //установка текущего времени в дата-пикере максимальным
         let date = Date()
         print(date.timeIntervalSince1970)
         datePicker.maximumDate = date
@@ -61,7 +62,7 @@ class CreateViewController: UIViewController {
             } else {
                 bottomConstraint.constant = keyboardScreenEndFrame.height + 10
             }
-            
+        //подтягиваем констрейны
             view.needsUpdateConstraints()
             UIView.animate(withDuration: animationDuration) {
                 self.view.layoutIfNeeded()

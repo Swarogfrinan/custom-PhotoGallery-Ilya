@@ -38,15 +38,32 @@ class LoginViewController: UIViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
-        guard let confettiImageView = UIImageView.fromGif(frame: greetingsGifImage.frame, resourceName: "gif") else { return }
-         view.addSubview(confettiImageView)
-         confettiImageView.startAnimating()
+        guard let eyeGif = UIImageView.fromGif(frame: showPassButton.frame, resourceName: "eyeGif") else { return }
+         view.addSubview(eyeGif)
+        eyeGif.startAnimating()
+        
+        guard let handleGif = UIImageView.fromGif(frame: greetingsGifImage.frame, resourceName: "gif") else { return }
+         view.addSubview(handleGif)
+        handleGif.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
+//            confettiImageView.stopAnimating()
+                handleGif.removeFromSuperview()
+        }
+        
+        
+//        let gifTapGesture = UITapGestureRecognizer(target: UIImageView.self, action: #selector(gifAnimate))
+//gifTapGesture.cancelsTouchesInView = false
+//view.addGestureRecognizer(gifTapGesture)
 //        
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
 //        self.view.addGestureRecognizer(tapGesture)
 //
         registerForKeyboardNotifications()
-    }
+//    }
+//    @objc private func gifAnimate() {
+//        greetingsGifImage.startAnimating()
+   }
     //MARK: Проба браузера
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
@@ -68,6 +85,7 @@ class LoginViewController: UIViewController {
     //show passwrod button
     @IBAction func showPassButtonPressed(_ sender: UIButton) {
 //        textField.isSecureTextEntry = !textField.isSecureTextEntry
+//        showPassButton.setImage(eye, for: .normal)
         sender.isSelected = !sender.isSelected
         if !sender.isSelected == true {
         textField.isSecureTextEntry = true

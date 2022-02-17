@@ -556,11 +556,6 @@
                                                     <constraint firstItem="01d-7P-kOb" firstAttribute="top" secondItem="PK3-zF-k1i" secondAttribute="top" constant="86" id="qRF-1U-qXK"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="С возвращением!                            Введи свой пароль" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D20-IR-4Tb">
-                                                <rect key="frame" x="30" y="73" width="348" height="67"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpB-IT-dMQ">
                                                 <rect key="frame" x="52" y="710" width="310" height="52"/>
                                                 <color key="backgroundColor" systemColor="labelColor"/>
@@ -578,30 +573,44 @@
                                                     <action selector="loginButtonPressedWith_sender:" destination="izg-hb-okS" eventType="touchUpInside" id="Sdu-Tm-VBY"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gsr-aO-bqD">
-                                                <rect key="frame" x="157" y="160" width="100" height="100"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWV-7W-1xf">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="С возвращением!                            Введи свой пароль" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D20-IR-4Tb">
+                                                        <rect key="frame" x="33" y="159" width="348" height="55"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gsr-aO-bqD">
+                                                        <rect key="frame" x="157" y="30" width="100" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </imageView>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="JXT-2L-qWj"/>
+                                                    <constraint firstItem="gsr-aO-bqD" firstAttribute="leading" secondItem="pWV-7W-1xf" secondAttribute="leading" constant="157" id="JrI-cw-a1X"/>
+                                                    <constraint firstAttribute="trailing" secondItem="D20-IR-4Tb" secondAttribute="trailing" constant="33" id="QNF-gI-mVx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="D20-IR-4Tb" secondAttribute="bottom" constant="6" id="QmB-VX-9my"/>
+                                                    <constraint firstItem="gsr-aO-bqD" firstAttribute="top" secondItem="pWV-7W-1xf" secondAttribute="top" constant="30" id="bkR-H8-dya"/>
+                                                    <constraint firstItem="D20-IR-4Tb" firstAttribute="top" secondItem="gsr-aO-bqD" secondAttribute="bottom" constant="29" id="ga5-MJ-u22"/>
+                                                    <constraint firstItem="D20-IR-4Tb" firstAttribute="leading" secondItem="pWV-7W-1xf" secondAttribute="leading" constant="33" id="tkq-pw-ndB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gsr-aO-bqD" secondAttribute="trailing" constant="157" id="xpY-I7-YTf"/>
                                                 </constraints>
-                                            </imageView>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="gsr-aO-bqD" secondAttribute="trailing" constant="157" id="7Nl-qa-JJJ"/>
                                             <constraint firstItem="fpB-IT-dMQ" firstAttribute="leading" secondItem="ogj-MI-Zkw" secondAttribute="leading" constant="52" id="EAX-U9-2SV"/>
-                                            <constraint firstItem="gsr-aO-bqD" firstAttribute="top" secondItem="D20-IR-4Tb" secondAttribute="bottom" constant="20" id="ImG-Yp-nKr"/>
-                                            <constraint firstItem="PK3-zF-k1i" firstAttribute="top" secondItem="D20-IR-4Tb" secondAttribute="bottom" constant="80" id="O2j-VA-fSe"/>
                                             <constraint firstItem="PK3-zF-k1i" firstAttribute="leading" secondItem="ogj-MI-Zkw" secondAttribute="leading" id="Qo4-EB-i5Z"/>
+                                            <constraint firstAttribute="trailing" secondItem="pWV-7W-1xf" secondAttribute="trailing" id="R5W-5A-q1d"/>
                                             <constraint firstItem="PK3-zF-k1i" firstAttribute="top" secondItem="ogj-MI-Zkw" secondAttribute="top" constant="220" id="VlZ-Gp-74v"/>
+                                            <constraint firstItem="pWV-7W-1xf" firstAttribute="top" secondItem="ogj-MI-Zkw" secondAttribute="top" id="YBO-rn-CqP"/>
+                                            <constraint firstItem="PK3-zF-k1i" firstAttribute="top" secondItem="pWV-7W-1xf" secondAttribute="bottom" id="Zo4-02-A4M"/>
                                             <constraint firstAttribute="trailing" secondItem="PK3-zF-k1i" secondAttribute="trailing" id="i3K-2Z-BV6"/>
-                                            <constraint firstItem="gsr-aO-bqD" firstAttribute="leading" secondItem="ogj-MI-Zkw" secondAttribute="leading" constant="157" id="jLs-oA-tyh"/>
                                             <constraint firstItem="PK3-zF-k1i" firstAttribute="centerX" secondItem="fpB-IT-dMQ" secondAttribute="centerX" id="kR0-kK-jE2"/>
-                                            <constraint firstItem="D20-IR-4Tb" firstAttribute="leading" secondItem="ogj-MI-Zkw" secondAttribute="leading" constant="30" id="lvN-hP-M8O"/>
                                             <constraint firstItem="fpB-IT-dMQ" firstAttribute="top" secondItem="PK3-zF-k1i" secondAttribute="bottom" constant="84" id="nNp-5G-Eft"/>
-                                            <constraint firstAttribute="trailing" secondItem="D20-IR-4Tb" secondAttribute="trailing" constant="36" id="wOl-52-7sf"/>
-                                            <constraint firstItem="D20-IR-4Tb" firstAttribute="top" secondItem="ogj-MI-Zkw" secondAttribute="top" constant="73" id="x7Y-c8-7Pb"/>
                                             <constraint firstAttribute="bottom" secondItem="fpB-IT-dMQ" secondAttribute="bottom" constant="134" id="xCc-T4-bpz"/>
+                                            <constraint firstItem="pWV-7W-1xf" firstAttribute="leading" secondItem="ogj-MI-Zkw" secondAttribute="leading" id="xxT-iY-ofK"/>
                                         </constraints>
                                     </view>
                                 </subviews>
