@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var showPassButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var greetingsGifImage: UIImageView!
     
     //MARK: Проверка нового пользователя
     
@@ -36,10 +37,15 @@ class LoginViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+        guard let confettiImageView = UIImageView.fromGif(frame: greetingsGifImage.frame, resourceName: "gif") else { return }
+         view.addSubview(confettiImageView)
+         confettiImageView.startAnimating()
 //        
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
 //        self.view.addGestureRecognizer(tapGesture)
-//        
+//
+        registerForKeyboardNotifications()
     }
     //MARK: Проба браузера
 //    override func viewDidAppear(_ animated: Bool) {

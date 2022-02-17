@@ -22,6 +22,11 @@ class AddViewController: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+        registerForKeyboardNotifications()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     //MARK: Func
     //скрытие клавиатуры по тапу на экран

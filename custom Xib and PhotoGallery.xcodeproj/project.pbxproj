@@ -23,8 +23,10 @@
 		435805CB27B68E83007E6FE6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435805CA27B68E83007E6FE6 /* Photo.swift */; };
 		435805CD27B690E8007E6FE6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435805CC27B690E8007E6FE6 /* Enums.swift */; };
 		435805CF27B691EE007E6FE6 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435805CE27B691EE007E6FE6 /* extension.swift */; };
-		4384A02F27BE6367005E1822 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4384A02E27BE6366005E1822 /* gif.gif */; };
-		4384A03627BE70B4005E1822 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4384A03527BE70B3005E1822 /* gif.gif */; };
+		436230FD27BED1CF00FEC786 /* Gif Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436230FC27BED1CF00FEC786 /* Gif Swift.swift */; };
+		4362310127BED24000FEC786 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362310027BED24000FEC786 /* LaunchViewController.swift */; };
+		4362310327BED25F00FEC786 /* launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362310227BED25F00FEC786 /* launch.swift */; };
+		4362310527BEDA4200FEC786 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4362310427BEDA4000FEC786 /* gif.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +48,10 @@
 		435805CA27B68E83007E6FE6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		435805CC27B690E8007E6FE6 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		435805CE27B691EE007E6FE6 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
-		4384A02E27BE6366005E1822 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
-		4384A03527BE70B3005E1822 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
+		436230FC27BED1CF00FEC786 /* Gif Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gif Swift.swift"; sourceTree = "<group>"; };
+		4362310027BED24000FEC786 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		4362310227BED25F00FEC786 /* launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launch.swift; sourceTree = "<group>"; };
+		4362310427BEDA4000FEC786 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,10 +91,12 @@
 				4331AD8C27B5762500D4BC98 /* ViewController.swift */,
 				4331AD8E27B5762500D4BC98 /* Main.storyboard */,
 				4331AD9127B5762700D4BC98 /* Assets.xcassets */,
-				4384A02E27BE6366005E1822 /* gif.gif */,
-				4384A03527BE70B3005E1822 /* gif.gif */,
+				4362310427BEDA4000FEC786 /* gif.gif */,
+				436230FC27BED1CF00FEC786 /* Gif Swift.swift */,
+				4362310027BED24000FEC786 /* LaunchViewController.swift */,
 				4331AD9327B5762700D4BC98 /* LaunchScreen.storyboard */,
 				4331AD9627B5762700D4BC98 /* Info.plist */,
+				4362310227BED25F00FEC786 /* launch.swift */,
 			);
 			path = "custom Xib and PhotoGallery";
 			sourceTree = "<group>";
@@ -182,11 +188,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4331AD9527B5762700D4BC98 /* LaunchScreen.storyboard in Resources */,
-				4384A02F27BE6367005E1822 /* gif.gif in Resources */,
 				4331AD9227B5762700D4BC98 /* Assets.xcassets in Resources */,
-				4384A03627BE70B4005E1822 /* gif.gif in Resources */,
 				4331AD9D27B5774100D4BC98 /* CustomView.xib in Resources */,
 				4331AD9027B5762500D4BC98 /* Main.storyboard in Resources */,
+				4362310527BEDA4200FEC786 /* gif.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,13 +207,16 @@
 				4331ADA727B5C00D00D4BC98 /* AddViewController.swift in Sources */,
 				435805CF27B691EE007E6FE6 /* extension.swift in Sources */,
 				4331ADA327B5BFDD00D4BC98 /* CreateViewController.swift in Sources */,
+				4362310127BED24000FEC786 /* LaunchViewController.swift in Sources */,
 				435805CB27B68E83007E6FE6 /* Photo.swift in Sources */,
 				4331AD9F27B5796600D4BC98 /* CustomView.swift in Sources */,
 				4331ADA127B5BFAA00D4BC98 /* LoginViewController.swift in Sources */,
 				4331AD8B27B5762500D4BC98 /* SceneDelegate.swift in Sources */,
 				4331ADA527B5BFFA00D4BC98 /* ManagerViewController.swift in Sources */,
 				4331ADA927B5C02500D4BC98 /* StorageViewController.swift in Sources */,
+				436230FD27BED1CF00FEC786 /* Gif Swift.swift in Sources */,
 				435805CD27B690E8007E6FE6 /* Enums.swift in Sources */,
+				4362310327BED25F00FEC786 /* launch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +368,8 @@
 				DEVELOPMENT_TEAM = 5K6Q3VCR94;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "custom Xib and PhotoGallery/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Подтверди разрешение";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "plz confirm";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -388,6 +398,8 @@
 				DEVELOPMENT_TEAM = 5K6Q3VCR94;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "custom Xib and PhotoGallery/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Подтверди разрешение";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "plz confirm";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
