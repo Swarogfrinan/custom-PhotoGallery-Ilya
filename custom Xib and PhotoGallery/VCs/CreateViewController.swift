@@ -40,6 +40,7 @@ class CreateViewController: UIViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
+    //Функция скрытия клавиатуры по тапу на экран
     @objc private func hideKeyboard(){
         firstTextField.resignFirstResponder()
         view.endEditing(true)

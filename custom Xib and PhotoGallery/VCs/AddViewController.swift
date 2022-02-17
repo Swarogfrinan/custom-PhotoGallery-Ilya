@@ -13,31 +13,66 @@ class AddViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
-//        self.view.addGestureRecognizer(tapGesture)
+    //скрытие клавиатуры по тапу на экран
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     //MARK: Func
+    //скрытие клавиатуры по тапу на экран
+    @objc private func hideKeyboard(){
+        view.endEditing(true)
+    }
+    //mark: 19 урок Пикер
+    private func registerForKeyboardNotifications() {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
+        @objc private func keyboardWillShow(_ notification: NSNotification) {
+            guard let userInfo = notification.userInfo,
+                  let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+                  let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+            
+            if notification.name == UIResponder.keyboardWillHideNotification {
+                bottomConstraint.constant = 0
+            } else {
+                bottomConstraint.constant = keyboardScreenEndFrame.height + 10
+            }
+            
+            view.needsUpdateConstraints()
+            UIView.animate(withDuration: animationDuration) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    
+    // Вызвать алерт добавления фото
     @IBAction func addButtonPressed(_ sender: UIButton){
         ShowAlertActionSheet()
     }
+    //Назад
     @IBAction func cancelButtonPressed(_ sender: UIButton){
         dismiss(animated: true, completion: nil)
     }
+        //Сохранить фото в PhotoArray и закодировать
     @IBAction func saveButtonPressed (_ sender: UIButton){
         guard let image = imageView.image else {
-            showAlert(title:"Error", message: "Empty image", defaultAction: nil)
+            showAlert(title:"Ошибка", message: "Добавь фото", defaultAction: nil)
             return
         }
+        //Запись значений
         guard let text = textField.text else { return }
         guard let imageName = saveImage(image: image) else { return }
         let photo = Photo(name: imageName, message: text)
-
+            //Объявление массива фотографий записанного в UserDefaults
         if let array = UserDefaults.standard.value([Photo].self, forKey: Keys.photos.rawValue) {
     var tempArray = array
+            //Добавление фотографии в массив
     tempArray.append(photo)
     UserDefaults.standard.set(encodable: tempArray, forKey: Keys.photos.rawValue)
 
@@ -45,8 +80,8 @@ class AddViewController: UIViewController {
             let array: [Photo] = [photo]
             UserDefaults.standard.set(encodable: array, forKey: Keys.photos.rawValue)
         }
-
-        showAlert(title: "Succes!", message: "Photo saved!") {
+//Sucsess alert
+        showAlert(title: "Отлично!", message: "Фото добавлено!") {
             self.imageView.image = nil
             self.textField.text = ""
         }
@@ -54,24 +89,39 @@ class AddViewController: UIViewController {
     }
     //MARK: Alert выбора
     private func ShowAlertActionSheet() {
-        let alert = UIAlertController(title: "add photo", message: "Choose source", preferredStyle: .actionSheet)
-        let camera = UIAlertAction(title: "Camera", style: .default) { _ in
-            self.showPicker(source: .camera)
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let camera = UIAlertAction(title: "Камера", style: .default) { _ in
+            self.showPickerCamera(source: .front)
         }
-        let library = UIAlertAction(title: "Library", style: .default) { _ in
+        let library = UIAlertAction(title: "Фотоальбом", style: .default) { _ in
             self.showPicker(source: .photoLibrary)
+            }
+        let ok = UIAlertAction(title: "Отменить", style: .cancel) { _ in
+            
         }
+
+        alert.addAction(ok)
         alert.addAction(camera)
         alert.addAction(library)
         present(alert, animated: true,completion: nil)
     }
     //MARK: ShowPicker
-    private func showPicker(source: UIImagePickerController.SourceType){
+    private func showPicker(source: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
         picker.sourceType = source
         present(picker, animated: true,completion: nil)
+        
+    }
+    private func showPickerCamera(source: UIImagePickerController.CameraDevice) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = .camera
+        present(picker, animated: true,completion: nil)
+        
     }
     //MARK: SaveImage
     private func saveImage(image: UIImage) -> String? {

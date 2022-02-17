@@ -4,6 +4,10 @@
 <dict>
 	<key>NSAppTransportSecurity</key>
 	<dict/>
+	<key>NSCameraUsageDescription</key>
+	<string>Подтверди разрешение</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>plz confirm</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

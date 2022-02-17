@@ -98,6 +98,7 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
         blurView.isHidden = true
         picker.dismiss(animated: true, completion: nil)
     }
+    
 }
 
 
