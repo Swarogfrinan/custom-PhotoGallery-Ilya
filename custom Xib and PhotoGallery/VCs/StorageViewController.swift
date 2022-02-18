@@ -18,6 +18,8 @@ class StorageViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var imageContainer: UIView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backButton: UIButton!
     
     //MARK: PhotoArray
     var photosArray: [Photo]?
@@ -51,7 +53,6 @@ class StorageViewController: UIViewController {
 //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
 //    self.view.addGestureRecognizer(tapGesture)
         //MARK: Скрытие клавиатуры
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -61,8 +62,33 @@ class StorageViewController: UIViewController {
         textField.resignFirstResponder()
         view.endEditing(true)
     }
+    //MARK:  ScrollView + textfield constraints.
+    private func registerForKeyboardNotifications() {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
+        @objc private func keyboardWillShow(_ notification: NSNotification) {
+            guard let userInfo = notification.userInfo,
+                  let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+                  let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+            
+            if notification.name == UIResponder.keyboardWillHideNotification {
+                bottomConstraint.constant = 0
+            } else {
+                bottomConstraint.constant = keyboardScreenEndFrame.height + 10
+            }
+            
+            view.needsUpdateConstraints()
+            UIView.animate(withDuration: animationDuration) {
+                self.view.layoutIfNeeded()
+            }
+        }
     
-    //MARK: добавил хуйни cancel action
+    
+    
+    
+    //MARK: cancel action
     var cancelAction: (() -> ())?
     func configure(message:String, cancel: String, ok: String, okAction: (() -> ())? = nil, cancelAction: (() -> ())? = nil){
         
@@ -72,7 +98,7 @@ class StorageViewController: UIViewController {
 }
     
     
-        //MARK: Листание вправо
+    //MARK: Листание вправо
     @IBAction func rightButtonPressed(_ sender: UIButton) {
         
         updateData()
@@ -137,14 +163,16 @@ class StorageViewController: UIViewController {
             }
         //удаление фотографии
             @IBAction func deleteButtonPressed(_ sender: UIButton){
-                showAlertDelete(title: "Delete photo", message: "Are your sure?") {
-                    self.delete()
-//                } cancelAction: {
-//                return
-            }
+                self.showAlertDelete(title: "Delete photo", message: "Are your sure?", defaultAction: nil)
+                self.delete()
                 
             }
-        //MARK: загрузка изображения
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: загрузка изображения
 private func loadImage(fileName: String) -> UIImage? {
     if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
     let imageUrl = documentsDirectory.appendingPathComponent(fileName)

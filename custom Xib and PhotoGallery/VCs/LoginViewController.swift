@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var showPassButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var greetingsGifImage: UIImageView!
+    @IBOutlet weak var testGif: UIImageView!
     
     //MARK: Проверка нового пользователя
     
@@ -38,18 +39,15 @@ class LoginViewController: UIViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
-        guard let eyeGif = UIImageView.fromGif(frame: showPassButton.frame, resourceName: "eyeGif") else { return }
-         view.addSubview(eyeGif)
-        eyeGif.startAnimating()
         
-        guard let handleGif = UIImageView.fromGif(frame: greetingsGifImage.frame, resourceName: "gif") else { return }
-         view.addSubview(handleGif)
-        handleGif.startAnimating()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
-//            confettiImageView.stopAnimating()
-                handleGif.removeFromSuperview()
-        }
+//        guard let handleGif = UIImageView.fromGif(frame: greetingsGifImage.frame, resourceName: "gif") else { return }
+//         view.addSubview(handleGif)
+//        handleGif.startAnimating()
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
+////            confettiImageView.stopAnimating()
+//                handleGif.removeFromSuperview()
+//        }
         
         
 //        let gifTapGesture = UITapGestureRecognizer(target: UIImageView.self, action: #selector(gifAnimate))
@@ -60,21 +58,14 @@ class LoginViewController: UIViewController {
 //        self.view.addGestureRecognizer(tapGesture)
 //
         registerForKeyboardNotifications()
-//    }
-//    @objc private func gifAnimate() {
-//        greetingsGifImage.startAnimating()
+
    }
-    //MARK: Проба браузера
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        let webView = WKWebView.init(frame: view.frame)
-//        view.addSubview(webView)
-//        let adress = "https://www.vk.com"
-//        guard let url = URL(string: adress) else { return }
-//        let request = URLRequest(url: url)
-//
-//        webView.load(request)
-//    }
+    func animatedPassword() {
+    guard let passwordGif = UIImageView.fromGif(frame: testGif.frame, resourceName: "eyeGif") else { return }
+    view.addSubview(passwordGif)
+    passwordGif.startAnimating()
+    
+    }
     
     //MARK: Прячем клавиатуру
     @objc private func hideKeyboard(){
@@ -86,11 +77,14 @@ class LoginViewController: UIViewController {
     @IBAction func showPassButtonPressed(_ sender: UIButton) {
 //        textField.isSecureTextEntry = !textField.isSecureTextEntry
 //        showPassButton.setImage(eye, for: .normal)
+        
         sender.isSelected = !sender.isSelected
         if !sender.isSelected == true {
+            animatedPassword()
         textField.isSecureTextEntry = true
     }
      else {
+         testGif.stopAnimating()
         textField.isSecureTextEntry = false
     }
         }
@@ -105,13 +99,16 @@ class LoginViewController: UIViewController {
             self.navigationController?.pushViewController(controller, animated: true)
     
     } else {
+        //не знаю
         let generator = UISelectionFeedbackGenerator()
         generator.selectionChanged()
+        //вибрация при ошибке
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-    
+        //алерт ошибки
         showAlert(title:"Error!", message: "Wrong password", defaultAction: nil)
     }
     }
+//MARK: Подъем клавиатуры констрейном
     private func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -157,3 +154,14 @@ private func showCreateNewVc() {
 
 }
 
+//MARK: Проба браузера
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        let webView = WKWebView.init(frame: view.frame)
+//        view.addSubview(webView)
+//        let adress = "https://www.vk.com"
+//        guard let url = URL(string: adress) else { return }
+//        let request = URLRequest(url: url)
+//
+//        webView.load(request)
+//    }

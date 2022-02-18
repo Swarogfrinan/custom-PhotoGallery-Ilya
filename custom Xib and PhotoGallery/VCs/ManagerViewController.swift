@@ -10,7 +10,7 @@ import UIKit
 //MARK: Переход в хранилище фотографий или же их добавление
 class ManagerViewController: UIViewController {
     
-    @IBOutlet weak var greetingsGifImage: UIImageView!
+//    @IBOutlet weak var greetingsGifImage: UIImageView!
     @IBOutlet weak var storageButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
     
@@ -19,7 +19,7 @@ class ManagerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      chobluat()
+   
 //        do {
 //            let gif = try UIImage(gifName: "gif.gif")
 //            let imageview = UIImageView(gifImage: gif, loopCount: 3) // Will loop 3 times
@@ -29,10 +29,10 @@ class ManagerViewController: UIViewController {
 //            print(error)
 //        }
     }
-    func chobluat() {
-        var greetImage = UIImage(named: "gif")
-        self.greetingsGifImage.image = greetImage
-    }
+//    func chobluat() {
+//        var greetImage = UIImage(named: "gif")
+//        self.greetingsGifImage.image = greetImage
+//    }
     
     @IBAction func storageButtonPressed(_ sender: UIButton) {
         guard let controler = self.storyboard?.instantiateViewController(withIdentifier: "StorageViewController") as? StorageViewController else {return}

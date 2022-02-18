@@ -14,6 +14,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backButtonPressed: UIButton!
     
     //MARK: lifecycle
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class AddViewController: UIViewController {
     @objc private func hideKeyboard(){
         view.endEditing(true)
     }
-    //mark: 19 урок Пикер
+    //MARK: Подъем клавиатуры под text-feild
     private func registerForKeyboardNotifications() {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -61,7 +62,7 @@ class AddViewController: UIViewController {
         ShowAlertActionSheet()
     }
     //Назад
-    @IBAction func cancelButtonPressed(_ sender: UIButton){
+    @IBAction func backButtonPressed(_ sender: UIButton){
         dismiss(animated: true, completion: nil)
     }
         //Сохранить фото в PhotoArray и закодировать
@@ -117,6 +118,8 @@ class AddViewController: UIViewController {
         picker.delegate = self
         picker.allowsEditing = true
         picker.sourceType = source
+        picker.cameraOverlayView = imageView
+
         present(picker, animated: true,completion: nil)
         
     }
@@ -125,6 +128,7 @@ class AddViewController: UIViewController {
         picker.delegate = self
         picker.allowsEditing = true
         picker.sourceType = .camera
+        picker.showsCameraControls = true
         present(picker, animated: true,completion: nil)
         
     }

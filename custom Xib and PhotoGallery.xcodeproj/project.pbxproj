@@ -26,7 +26,8 @@
 		436230FD27BED1CF00FEC786 /* Gif Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436230FC27BED1CF00FEC786 /* Gif Swift.swift */; };
 		4362310127BED24000FEC786 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362310027BED24000FEC786 /* LaunchViewController.swift */; };
 		4362310327BED25F00FEC786 /* launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362310227BED25F00FEC786 /* launch.swift */; };
-		4362310527BEDA4200FEC786 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4362310427BEDA4000FEC786 /* gif.gif */; };
+		4370B2EE27BFA7640080CEA8 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4370B2F027BFA7640080CEA8 /* gif.gif */; };
+		4370B2F327BFAC400080CEA8 /* eyeGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4370B2F527BFAC400080CEA8 /* eyeGif.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +52,8 @@
 		436230FC27BED1CF00FEC786 /* Gif Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gif Swift.swift"; sourceTree = "<group>"; };
 		4362310027BED24000FEC786 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		4362310227BED25F00FEC786 /* launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launch.swift; sourceTree = "<group>"; };
-		4362310427BEDA4000FEC786 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
+		4370B2EF27BFA7640080CEA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = en; path = en.lproj/gif.gif; sourceTree = "<group>"; };
+		4370B2F427BFAC400080CEA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Base; path = Base.lproj/eyeGif.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +93,13 @@
 				4331AD8C27B5762500D4BC98 /* ViewController.swift */,
 				4331AD8E27B5762500D4BC98 /* Main.storyboard */,
 				4331AD9127B5762700D4BC98 /* Assets.xcassets */,
-				4362310427BEDA4000FEC786 /* gif.gif */,
+				4370B2F027BFA7640080CEA8 /* gif.gif */,
 				436230FC27BED1CF00FEC786 /* Gif Swift.swift */,
 				4362310027BED24000FEC786 /* LaunchViewController.swift */,
 				4331AD9327B5762700D4BC98 /* LaunchScreen.storyboard */,
 				4331AD9627B5762700D4BC98 /* Info.plist */,
 				4362310227BED25F00FEC786 /* launch.swift */,
+				4370B2F527BFAC400080CEA8 /* eyeGif.gif */,
 			);
 			path = "custom Xib and PhotoGallery";
 			sourceTree = "<group>";
@@ -190,8 +193,9 @@
 				4331AD9527B5762700D4BC98 /* LaunchScreen.storyboard in Resources */,
 				4331AD9227B5762700D4BC98 /* Assets.xcassets in Resources */,
 				4331AD9D27B5774100D4BC98 /* CustomView.xib in Resources */,
+				4370B2F327BFAC400080CEA8 /* eyeGif.gif in Resources */,
 				4331AD9027B5762500D4BC98 /* Main.storyboard in Resources */,
-				4362310527BEDA4200FEC786 /* gif.gif in Resources */,
+				4370B2EE27BFA7640080CEA8 /* gif.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +241,23 @@
 				4331AD9427B5762700D4BC98 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4370B2F027BFA7640080CEA8 /* gif.gif */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4370B2EF27BFA7640080CEA8 /* en */,
+			);
+			name = gif.gif;
+			sourceTree = "<group>";
+		};
+		4370B2F527BFAC400080CEA8 /* eyeGif.gif */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4370B2F427BFAC400080CEA8 /* Base */,
+			);
+			name = eyeGif.gif;
+			path = Assets.xcassets/eyeGif.dataset;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
