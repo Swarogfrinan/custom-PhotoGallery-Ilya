@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -774,26 +775,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-pT-rBf">
-                                <rect key="frame" x="114" y="489" width="186" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEV-hA-tuK">
+                                <rect key="frame" x="33" y="791" width="164" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="JWq-Eb-3ip"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Добавить фото"/>
-                                <connections>
-                                    <action selector="addPhotoButtonPressed:" destination="EVF-r8-YJh" eventType="touchUpInside" id="BH5-62-Fyz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEV-hA-tuK">
-                                <rect key="frame" x="125" y="331" width="164" height="34"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="ZtJ-dJ-ncb"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -810,19 +794,69 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="chevron.backward" catalog="system"/>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vyC-hd-sO8">
+                                <rect key="frame" x="20" y="84" width="374" height="699"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lFS-LB-rZw">
+                                    <size key="itemSize" width="140" height="126"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dg8-fB-dec">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7Bo-CJ-lhr">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="126"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wsx-mF-grb">
+                                        <rect key="frame" x="234" y="0.0" width="140" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Mos-bo-dxY">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="126"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="140" height="126"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="EVF-r8-YJh" id="icD-Tc-hRJ"/>
+                                    <outlet property="delegate" destination="EVF-r8-YJh" id="aj4-X9-OjX"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-pT-rBf">
+                                <rect key="frame" x="228" y="791" width="158" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Добавить фото"/>
+                                <connections>
+                                    <action selector="addPhotoButtonPressed:" destination="EVF-r8-YJh" eventType="touchUpInside" id="BH5-62-Fyz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cxU-IX-PVd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QEV-hA-tuK" firstAttribute="top" secondItem="fw8-OI-afl" secondAttribute="top" constant="313" id="8VV-sf-NrC"/>
-                            <constraint firstItem="QEV-hA-tuK" firstAttribute="centerX" secondItem="IK9-pT-rBf" secondAttribute="centerX" id="Lpa-Vv-PLb"/>
-                            <constraint firstItem="QEV-hA-tuK" firstAttribute="centerX" secondItem="fw8-OI-afl" secondAttribute="centerX" id="ayW-Rn-hnk"/>
-                            <constraint firstItem="cxU-IX-PVd" firstAttribute="bottom" secondItem="IK9-pT-rBf" secondAttribute="bottom" constant="339" id="bm3-Ng-w45"/>
-                            <constraint firstItem="IK9-pT-rBf" firstAttribute="leading" secondItem="cxU-IX-PVd" secondAttribute="leading" constant="114" id="u3R-3H-psd"/>
+                            <constraint firstItem="cxU-IX-PVd" firstAttribute="bottom" secondItem="IK9-pT-rBf" secondAttribute="bottom" constant="31" id="0W7-No-eAe"/>
+                            <constraint firstItem="cxU-IX-PVd" firstAttribute="bottom" secondItem="QEV-hA-tuK" secondAttribute="bottom" constant="31" id="2zt-rW-ndx"/>
+                            <constraint firstItem="IK9-pT-rBf" firstAttribute="leading" secondItem="QEV-hA-tuK" secondAttribute="trailing" constant="31" id="J0h-yc-RPy"/>
+                            <constraint firstItem="cxU-IX-PVd" firstAttribute="trailing" secondItem="vyC-hd-sO8" secondAttribute="trailing" constant="20" id="OX0-eA-YDk"/>
+                            <constraint firstItem="vyC-hd-sO8" firstAttribute="top" secondItem="cxU-IX-PVd" secondAttribute="top" constant="40" id="c65-yB-i88"/>
+                            <constraint firstItem="cxU-IX-PVd" firstAttribute="trailing" secondItem="IK9-pT-rBf" secondAttribute="trailing" constant="28" id="dae-hr-vPM"/>
+                            <constraint firstItem="IK9-pT-rBf" firstAttribute="top" secondItem="vyC-hd-sO8" secondAttribute="bottom" constant="8" symbolic="YES" id="e5C-VY-zQQ"/>
+                            <constraint firstItem="vyC-hd-sO8" firstAttribute="leading" secondItem="cxU-IX-PVd" secondAttribute="leading" constant="20" id="lYB-lP-AfU"/>
+                            <constraint firstItem="IK9-pT-rBf" firstAttribute="leading" secondItem="QEV-hA-tuK" secondAttribute="trailing" constant="31" id="nuH-rD-LqT"/>
+                            <constraint firstItem="QEV-hA-tuK" firstAttribute="leading" secondItem="cxU-IX-PVd" secondAttribute="leading" constant="33" id="o7G-9e-54n"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addPhotoButton" destination="IK9-pT-rBf" id="BKe-t1-2Tl"/>
+                        <outlet property="collectionView" destination="vyC-hd-sO8" id="j7m-qC-pRt"/>
                         <outlet property="storageButton" destination="QEV-hA-tuK" id="hUb-VL-eKe"/>
                     </connections>
                 </viewController>

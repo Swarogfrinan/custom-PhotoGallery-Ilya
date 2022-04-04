@@ -11,10 +11,15 @@ import UIKit
 class ManagerViewController: UIViewController {
     
 //    @IBOutlet weak var greetingsGifImage: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var storageButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
     
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,4 +56,26 @@ class ManagerViewController: UIViewController {
     
     
       
+}
+
+extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AddViewControllerdelegate, CollectionviewcellDelegate {
+    func didSelectPhotoToStorage(forIndex index: Int) {
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "StorageViewController") as? StorageViewController else { return }
+        controller.index = index
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    func didAddNewPhoto() {
+        collectionView.reloadData()
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Manager.shared.photos.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellManager", for: indexPath) as? UICollectionViewCell else { return UICollectionViewCell }
+        cell.configure(with: indexPath.item)
+        cell.delegate = self
+        return cell
+    }
 }

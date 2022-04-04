@@ -28,6 +28,8 @@
 		4362310327BED25F00FEC786 /* launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362310227BED25F00FEC786 /* launch.swift */; };
 		4370B2EE27BFA7640080CEA8 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4370B2F027BFA7640080CEA8 /* gif.gif */; };
 		4370B2F327BFAC400080CEA8 /* eyeGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4370B2F527BFAC400080CEA8 /* eyeGif.gif */; };
+		43EE768927F9C13A00AC94D4 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE768827F9C13A00AC94D4 /* Manager.swift */; };
+		43EE768B27F9CE2A00AC94D4 /* UICollectionViewCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE768A27F9CE2A00AC94D4 /* UICollectionViewCellManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		4362310227BED25F00FEC786 /* launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launch.swift; sourceTree = "<group>"; };
 		4370B2EF27BFA7640080CEA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = en; path = en.lproj/gif.gif; sourceTree = "<group>"; };
 		4370B2F427BFAC400080CEA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Base; path = Base.lproj/eyeGif.gif; sourceTree = "<group>"; };
+		43EE768827F9C13A00AC94D4 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		43EE768A27F9CE2A00AC94D4 /* UICollectionViewCellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				4331ADA627B5C00D00D4BC98 /* AddViewController.swift */,
 				4331ADA827B5C02500D4BC98 /* StorageViewController.swift */,
 				435805CA27B68E83007E6FE6 /* Photo.swift */,
+				43EE768C27F9CE3A00AC94D4 /* manager */,
 				435805CC27B690E8007E6FE6 /* Enums.swift */,
 				435805CE27B691EE007E6FE6 /* extension.swift */,
 			);
@@ -126,6 +131,15 @@
 				4331AD9C27B5774100D4BC98 /* CustomView.xib */,
 			);
 			name = xib;
+			sourceTree = "<group>";
+		};
+		43EE768C27F9CE3A00AC94D4 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				43EE768827F9C13A00AC94D4 /* Manager.swift */,
+				43EE768A27F9CE2A00AC94D4 /* UICollectionViewCellManager.swift */,
+			);
+			path = manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +223,10 @@
 				4331AD8D27B5762500D4BC98 /* ViewController.swift in Sources */,
 				4331AD8927B5762500D4BC98 /* AppDelegate.swift in Sources */,
 				4331ADA727B5C00D00D4BC98 /* AddViewController.swift in Sources */,
+				43EE768927F9C13A00AC94D4 /* Manager.swift in Sources */,
 				435805CF27B691EE007E6FE6 /* extension.swift in Sources */,
 				4331ADA327B5BFDD00D4BC98 /* CreateViewController.swift in Sources */,
+				43EE768B27F9CE2A00AC94D4 /* UICollectionViewCellManager.swift in Sources */,
 				4362310127BED24000FEC786 /* LaunchViewController.swift in Sources */,
 				435805CB27B68E83007E6FE6 /* Photo.swift in Sources */,
 				4331AD9F27B5796600D4BC98 /* CustomView.swift in Sources */,

@@ -97,6 +97,49 @@ class StorageViewController: UIViewController {
         self.cancelAction = cancelAction
 }
     
+    //MARK: 03.Апрель починить
+    private func buttonsPressed(direction: Direction) {
+        
+        switch direction {
+        case left:
+            index = index == 0 ? Manager.shared.photos.count - 1 : index - 1
+        case right:
+            index = index == Manager.shared.photos.count - 1 ? 0 : index + 1
+        }
+        let image = loadImage(fileName: Manager.shared.photos[index].name) ?? UIImage()
+    }
+    
+    
+    
+    
+    
+    
+    
+    private func animatePicture(direction: Direction, image : UIImage) {
+        guard var frame = imageView.superview?.frame else { return }
+        frame.origin.y -= ofset.y
+        
+        let aminatedView = UIImageView(frame: frame)
+        aminatedView.contentMode = .scaleAspectFit
+        animatedView.image = image
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //MARK: Листание вправо
     @IBAction func rightButtonPressed(_ sender: UIButton) {
@@ -158,6 +201,8 @@ class StorageViewController: UIViewController {
     }
         //смена состояния лайка
             @IBAction func likeButtonPressed(_ sender: UIButton) {
+                let photos = Manager.shared.photos[index].name
+                
                 sender.isSelected = !sender.isSelected
                 liked = !liked
             }
