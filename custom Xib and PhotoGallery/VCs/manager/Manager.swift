@@ -21,7 +21,7 @@ class Manager {
             
 }
 }
-                                      func updateDefaults(array: [Photo]) {
+        func updateDefaults(array: [Photo]) {
                 UserDefaults.standard.set(encodable: array, forKey: Keys.photos.rawValue)
             }
 }

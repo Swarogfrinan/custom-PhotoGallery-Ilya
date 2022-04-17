@@ -10,6 +10,14 @@ import UIKit
 
 class StorageViewController: UIViewController {
     
+    private enum Direction {
+        case left, right
+        
+    }
+    
+    
+    
+    
     //MARK: IBOutlet
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
@@ -20,6 +28,14 @@ class StorageViewController: UIViewController {
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
+    
+    //индекс и оффсет подтягивание вьюшки после ухода клавиатуры.
+    var index = 0
+  lazy var offset = scrollView.contentOffset
+    
     
     //MARK: PhotoArray
     var photosArray: [Photo]?
@@ -48,6 +64,10 @@ class StorageViewController: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForKeyboardNotifications()
+        imageView.image = loadImage(fileName: Manager.shared.photos[index].name)
+        imageView.contentMode = .scaleAspectFit
+        textField.text = Manager.shared.photos[index].message
 //        styledButtons(buttons: arrowsButtons)
         loadDefault()
 //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIViewController.textFieldShouldEndEditing(_:)))
@@ -57,6 +77,12 @@ class StorageViewController: UIViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        offset = scrollView.contentOffset
+    }
+    
+    
+    
     
     @objc private func hideKeyboard(){
         textField.resignFirstResponder()
@@ -75,6 +101,7 @@ class StorageViewController: UIViewController {
             
             if notification.name == UIResponder.keyboardWillHideNotification {
                 bottomConstraint.constant = 0
+                scrollView.contentOffset = offset
             } else {
                 bottomConstraint.constant = keyboardScreenEndFrame.height + 10
             }
@@ -101,15 +128,20 @@ class StorageViewController: UIViewController {
     private func buttonsPressed(direction: Direction) {
         
         switch direction {
-        case left:
+        case .left:
+            
             index = index == 0 ? Manager.shared.photos.count - 1 : index - 1
-        case right:
+            
+        case .right:
+            
             index = index == Manager.shared.photos.count - 1 ? 0 : index + 1
         }
+        
         let image = loadImage(fileName: Manager.shared.photos[index].name) ?? UIImage()
+        
     }
     
-    
+     
     
     
     
@@ -117,12 +149,35 @@ class StorageViewController: UIViewController {
     
     private func animatePicture(direction: Direction, image : UIImage) {
         guard var frame = imageView.superview?.frame else { return }
-        frame.origin.y -= ofset.y
+        frame.origin.y -= offset.y
         
-        let aminatedView = UIImageView(frame: frame)
-        aminatedView.contentMode = .scaleAspectFit
-        animatedView.image = image
-    }
+        let aninatedView = UIImageView(frame: frame)
+        aninatedView.contentMode = .scaleAspectFit
+        aninatedView.image = image
+        
+        
+        switch direction{
+        case .left :
+            aninatedView.frame.origin.x = -aninatedView.frame.width
+        case .right :
+            aninatedView.frame.origin.y = -view.frame.width
+        }
+        
+        view.addSubview(aninatedView)
+        
+        UIView.animate(withDuration: 0.6) {
+            self.imageView.alpha = 0
+            aninatedView.frame.origin.x = frame.origin.x
+        } completion: { _ in
+            self.imageView.image = image
+            self.imageView.alpha = 1
+            aninatedView.removeFromSuperview()
+        }
+           
+            
+        }
+        
+    
     
     
     

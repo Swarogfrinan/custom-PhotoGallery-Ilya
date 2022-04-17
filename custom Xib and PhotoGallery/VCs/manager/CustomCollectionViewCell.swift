@@ -7,12 +7,14 @@
 
 import UIKit
 
-class CustomCollectionViewCellManager: UICollectionViewCell {
+class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
     func configure(with image: UIImage?) {
+        
         imageView.image = image
+
     }
     
     
