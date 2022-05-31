@@ -26,7 +26,7 @@ class CreateViewController: UIViewController {
     //MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //установка текущего времени в дата-пикере максимальным
+        ///установка текущего времени в дата-пикере максимальным
         let date = Date()
         print(date.timeIntervalSince1970)
         datePicker.maximumDate = date
@@ -175,7 +175,7 @@ class CreateViewController: UIViewController {
 //        }
     
     
-    
+
     //MARK: Func что-то здесь сломано // уже не сломано
     private func rulesToDo() -> Bool{
         var error = false
@@ -257,17 +257,17 @@ class CreateViewController: UIViewController {
 //MARK: 19 Занятие Picker
 extension CreateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            //количество барабанчиков в Пикере
+            ///количество барабанчиков в Пикере
             return 1
         }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //Считает количество строк в Пикере
+        ///Считает количество строк в Пикере
         return arrayGender.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //Берет число строки и переводит в строку
+        ///Берет число строки и переводит в строку
         return arrayGender[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
